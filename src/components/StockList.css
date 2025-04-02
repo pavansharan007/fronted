@@ -22,12 +22,12 @@ th, td {
 }
 
 th {
-  background-color: #63ed1ebb;
+  background-color: #6fe80d;
   font-weight: bold;
 }
 
 tr:hover {
-  background-color: #73de1c;
+  background-color: #f8f8f7;
 }
 
 td {
