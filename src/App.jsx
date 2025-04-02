@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import StockList from "./components/StockList";
@@ -11,18 +11,11 @@ const App = () => {
   useEffect(() => {
     const fetchStocks = async () => {
       try {
-        // ✅ Fetch data from the backend
-        const response = await axios.get("https://smart-invest-4n35.onrender.com/stocks");
-        console.log("API Response:", response.data);
-
-        // ✅ Check if data exists before setting it
-        if (Array.isArray(response.data)) {
-          setStocks(response.data);
-        } else {
-          setError("Invalid data format");
-        }
+        const response = await axios.get("https://backend-8o52.onrender.com/stocks");
+        console.log("Fetched data:", response.data);  // ✅ Debugging line
+        setStocks(response.data);
       } catch (error) {
-        console.error("Failed to load stocks:", error);
+        console.error("Error fetching stocks:", error);
         setError("Failed to load stocks. Please try again.");
       } finally {
         setLoading(false);
@@ -32,16 +25,13 @@ const App = () => {
     fetchStocks();
   }, []);
 
+  if (loading) return <p>Loading stocks...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <div className="App">
       <h1>Stock Ranking App</h1>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p className="error">{error}</p>
-      ) : (
-        <StockList stocks={stocks} />
-      )}
+      <StockList stocks={stocks} />
     </div>
   );
 };
