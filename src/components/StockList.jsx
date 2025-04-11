@@ -4,7 +4,7 @@ import "./StockList.css";  // ✅ Make sure you have the CSS file
 const StockList = ({ stocks }) => {
   return (
     <div className="stock-list">
-      <h2>Stock Rankings</h2>
+      <h2>Best Stock Rankings</h2>
       <table>
         <thead>
           <tr>
