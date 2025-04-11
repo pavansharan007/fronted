@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Stock Ranking App</h1>
+      <h1>smart invest</h1>
       <StockList stocks={stocks} />
     </div>
   );
